@@ -3,7 +3,7 @@
   <h1>Deepak G.</h1>
   <p>
     <strong>Aspiring Red Team Operator</strong><br />
-    Active Directory Security · Network Forensics · Windows Security
+    
   </p>
 
   <a href="https://git.io/typing-svg">
