@@ -17,7 +17,6 @@
 
 B.E. Computer Science and Engineering student at **Ballari Institute of Technology & Management (BITM)**, Karnataka, India (graduating in 2027). I build security-focused software and practice cybersecurity in authorized lab environments. My current focus includes Active Directory security, Windows auditing, network enumeration, packet-level traffic analysis, and understanding how security events can be correlated during investigations.
 
-- **GitHub:** [github.com/deepakg710](https://github.com/deepakg710)
 - **TryHackMe:** [tryhackme.com/p/deepak710](https://tryhackme.com/p/deepak710)
 - **Projects:** [AD-Monitor](https://github.com/deepakg710/AD-Monitor) · [NetTrace](https://github.com/deepakg710/NetTrace)
 - **Email:** [deepak710op@gmail.com](mailto:deepak710op@gmail.com)
