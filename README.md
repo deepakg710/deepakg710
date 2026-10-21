@@ -44,28 +44,6 @@ An offline packet-capture analysis and network-troubleshooting application built
 
 ---
 
-### 3. Active Directory Red Team Lab — Planned
-> **Status:** Planned project (not yet built or executed).
-
-The goal of this upcoming project is to build an isolated Windows domain laboratory environment containing a Windows Server Domain Controller and client workstations, then document structured, authorized security-testing workflows from initial enumeration through defensive remediation. All exercises will be conducted strictly within self-owned, isolated virtual machines.
-
-- **Planned Learning Objectives:**
-  - Domain and user enumeration
-  - Controlled misconfiguration discovery
-  - Authorized attack-path testing
-  - Privilege-boundary analysis
-  - Evidence collection and reproducibility
-  - Defensive remediation and validation
-- **Planned Deliverables:**
-  - Lab architecture diagram
-  - Setup and configuration documentation
-  - Sanitized commands and outputs
-  - Evidence-backed findings report
-  - Impact and remediation explanations
-  - Screenshots and validation results
-
----
-
 ## Skills & Technical Areas
 
 - **Networking:** TCP/IP fundamentals, three-way handshakes, RST/retransmission behavior, ARP, DNS resolution (`A`, `NXDOMAIN`, `SERVFAIL`), HTTP/TLS metadata, and subnetting.
