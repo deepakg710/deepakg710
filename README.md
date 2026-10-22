@@ -2,87 +2,59 @@
   <p><code>SECURITY ENGINEERING PORTFOLIO</code></p>
   <h1>Deepak G.</h1>
   <p>
-    <strong>Aspiring Red Team Operator</strong><br />
-    
+    <strong>Aspiring Red Team Operator | Active Directory Security | Network Security & Penetration Testing</strong>
   </p>
 
   <a href="https://git.io/typing-svg">
-    <img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&size=20&pause=1200&color=00D9FF&center=true&vCenter=true&width=650&height=55&lines=Active+Directory+Security;Network+Forensics+%26+Packet+Analysis;Building+Security+Tools+in+Authorized+Labs" alt="Active Directory Security, Network Forensics and Packet Analysis, and Security Tools in Authorized Labs" />
+    <img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&size=20&pause=1200&color=00D9FF&center=true&vCenter=true&width=650&height=55&lines=Active+Directory+Security;Network+Security+%26+Topology+Analysis;PCAP+Packet+Forensics+%26+Analysis;Security+Tooling+in+Authorized+Labs" alt="Active Directory Security, Network Security, Packet Analysis, Security Tooling" />
   </a>
 </div>
 
 ---
 
-**Aspiring Red Team Operator | Active Directory Security | Network Penetration Testing**
-
-B.E. Computer Science and Engineering student at **Ballari Institute of Technology & Management (BITM)**, Karnataka, India (graduating in 2027). I build security-focused software and practice cybersecurity in authorized lab environments. My current focus includes Active Directory security, Windows auditing, network enumeration, packet-level traffic analysis, and understanding how security events can be correlated during investigations.
+B.E. Computer Science and Engineering student at **Ballari Institute of Technology & Management (BITM)**, Karnataka, India (Class of 2027). I build defensive and offensive security tools, investigate network protocols, and practice hands-on cybersecurity in authorized lab environments.
 
 - **TryHackMe:** [tryhackme.com/p/deepak710](https://tryhackme.com/p/deepak710)
-- **Projects:** [AD-Monitor](https://github.com/deepakg710/AD-Monitor) · [NetTrace](https://github.com/deepakg710/NetTrace)
 - **Email:** [deepak710op@gmail.com](mailto:deepak710op@gmail.com)
+- **Key Projects:** [NetSec-Analyzer](https://github.com/deepakg710/netsec-analyzer) · [AD-Monitor](https://github.com/deepakg710/AD-Monitor) · [NetTrace](https://github.com/deepakg710/NetTrace)
 
 ---
 
 ## Featured Projects
 
-### 1. [AD-Monitor](https://github.com/deepakg710/AD-Monitor) — Defensive Security Monitoring & Insider-Threat Detection
+### 1. [NetSec-Analyzer](https://github.com/deepakg710/netsec-analyzer) — Cisco Network Security, Attack-Path & Resilience Analysis
+Local-first platform that parses Cisco IOS configurations, evaluates security posture, and reconstructs network topology without external dependencies.
+- **Topology & Attack Paths:** Automatically reconstructs L2/L3 topology graphs and models deterministic multi-hop attack paths across routing LPM and ACL boundaries.
+- **Resilience Engine:** Graph-theoretic detection of Single Points of Failure (SPOFs) via NetworkX articulation points and missing redundant uplinks.
+- **Auditing & Remediation:** CIS/NIST compliance scoring with line-numbered evidence, dual Beginner/Pro remediation views, and HTML/PDF report generation.
+- **Stack:** Python 3.11+ (FastAPI, NetworkX, ReportLab), React 19, TypeScript, Tailwind CSS v4, `@xyflow/react`.
 
-A defensive security monitoring and investigation platform built for a controlled Windows Active Directory laboratory environment (`lab.local`). Building this system provided hands-on visibility into how Windows Security Event IDs, process creation trees, and behavioral baselines record endpoint and domain activity during an investigation.
+### 2. [AD-Monitor](https://github.com/deepakg710/AD-Monitor) — Active Directory Defensive Monitoring & Insider Threat Detection
+Security monitoring and telemetry platform built for an enterprise Windows Active Directory lab (`lab.local`).
+- **Telemetry Ingestion:** Ingests forwarded Windows Security & Defender events (`4624`, `4625`, `4688`, `5145`, `4104`) via native WEF.
+- **Lineage & Traps:** Real-time process creation lineage trees, DPAPI-protected browser navigation auditing, and Canary file tripwires.
+- **Anomaly Detection:** 19 deterministic detection rules paired with an Isolation Forest User Behavior Analytics (UBA) baseline engine.
+- **Stack:** Python, FastAPI, SQLite, React, TypeScript, Tailwind CSS, Argon2id.
 
-- **Telemetry Ingestion & Normalization:**
-  - Ingests forwarded Windows Security and Defender XML events via native Windows Event Forwarding (WEF).
-  - Normalizes Event IDs `4624` (successful logon), `4625` (failed logon), `4656` (handle requested to an object; records handle requests and requested access masks without independently proving access success), `4663` (attempted access to an object), `4688` (process creation), `4689` (process exit), `5145` (network share object access check), `1116` (Defender malware detection), and `4104` (PowerShell script block logging) with Windows Domain SID (`S-1-5-21-...`) and source workstation attribution.
-- **Endpoint & Browser Collection:**
-  - **Read-Only Process Telemetry:** Lightweight PowerShell agent collecting process snapshots, parent-child lineage trees, CPU deltas, Authenticode signature verification, SHA-256 binary hashes, and regex-based command-line credential/token redaction.
-  - **Privacy-Preserving Browser Telemetry:** Chromium Manifest V3 extension and Windows DPAPI-protected Native Messaging host recording domain-only navigation (capturing top-level domains while stripping full paths, query strings, and credentials; does not record complete browsing history) and download SHA-256 lifecycle revisions.
-- **Correlation & Anomaly Detection:**
-  - **Investigation Timeline:** Correlates disparate multi-sensor events (`domain visit → file download → process execution → child process`) with explicit *"What This Evidence Proves"* and *"What It Does Not Prove"* boundaries (temporal proximity indicates correlation, but does not independently establish causality or malicious intent).
-  - **Detection Engines:** 19 deterministic rules (canary file access, staging and archiving, encoded PowerShell, sliding-window wrong-password counters) and a pure-Python Isolation Forest User Behavior Analytics (UBA) model with a 48-window baseline collection gate (`Collecting baseline`). Anomaly scores highlight statistical deviations from baseline rather than definitive evidence of compromise.
-- **Security Controls & Verification:**
-  - Argon2id password hashing, mandatory unique 12+ character administrator passphrase on initial setup, default-password blocklist, HTTP-only session cookies, and CSRF token protection.
-  - **Test Suite:** `27 passed` automated unit and integration tests across database migrations, event normalization, detection rules, UBA calculations, and API security (`python -m pytest -v`).
-- **Planned (Not Yet Implemented):**
-  - Microsoft Sysmon `Event ID 3` network connection ingestion, automated Sigma rule YAML import/export utility, and cross-workstation lateral movement graph visualization.
-
----
-
-### 2. [NetTrace](https://github.com/deepakg710/NetTrace) — Offline PCAP/PCAPNG Analysis & Network Investigation Tool
-
-An offline packet-capture analysis and network-troubleshooting application built with FastAPI, Scapy, SQLite, React, and TypeScript to inspect protocol headers, filter packet streams, and reconstruct observed endpoint communications.
-
-- **Streaming Packet Dissection:**
-  - Streaming Scapy `PcapReader` parser with magic-byte validation (`\xd4\xc3\xb2\xa1`, `\xa1\xb2\xc3\xd4`, `\x0a\x0d\x0d\x0a`).
-  - Decodes Frame, Ethernet II, ARP, IPv4/IPv6, TCP, UDP, ICMP, DNS, HTTP, and TLS SNI metadata with exact byte offsets (`byte_start`, `byte_end`) and synchronized hex/ASCII view.
-  - *Parser Scope:* TLS SNI and application-layer metadata are extracted only when available in cleartext headers or initial unencrypted handshakes; encrypted payload data is not decrypted.
-- **Display-Filter Engine:**
-  - Safe tokenizer and recursive-descent AST parser (zero `eval` or `exec`) supporting 27 L2–L7 fields (`ip.addr`, `ip.src`, `ip.dst`, `tcp.port`, `udp.port`, `tcp.flags.syn`, `tcp.flags.reset`, `frame.number`, `frame.len`, `dns.qry.name`, `dns.rcode`, etc.) with logical `&&`, `||`, `!`, and parentheses across backend and frontend.
-  - *Documented Limitation:* Implements a focused subset of display-filter syntax rather than full Wireshark dissector parity.
-- **Three-Pane Packet Explorer & Communication Topology:**
-  - Wireshark-style synchronized packet table, expandable protocol layer tree, and hex/ASCII byte viewer with byte offset highlighting.
-  - Interactive force-directed and grouped communication topology graph separating observed L3/L4 flows from inferred L2 relationships (inferred L2 links explicitly carry `inferred: true` and documented `basis` strings, never presented as directly observed evidence).
-- **Diagnostics, Reporting & Verification:**
-  - Heuristic detection for TCP SYN port scans, host sweeps, connection resets (`RST`), incomplete handshakes, and DNS `NXDOMAIN`/`SERVFAIL`/unanswered queries.
-  - Standalone HTML, ReportLab PDF, structured JSON, and filtered CSV exports.
-  - **Test Suite:** `12 passed` backend `pytest` tests + `10 passed` frontend `vitest` tests (`.\scripts\verify.ps1`).
-- **Planned / Scope Boundaries:**
-  - Offline `.pcap`/`.pcapng` analysis only (live network interface packet sniffing is out of scope by design). CIDR subnet filter notation (`192.168.1.0/24`) and TCP stream payload reassembly are planned.
+### 3. [NetTrace](https://github.com/deepakg710/NetTrace) — Offline PCAP/PCAPNG Packet Analysis & Forensics
+Offline network protocol analysis tool for deep packet dissection and flow visualization.
+- **Protocol Dissection:** Streaming Scapy parser decoding Frame, Ethernet II, ARP, IPv4/v6, TCP, UDP, ICMP, DNS, and TLS SNI with exact byte offsets.
+- **Display Filters:** AST recursive-descent filter engine evaluating 27 protocol fields with boolean logic.
+- **Explorer UI:** Wireshark-style 3-pane synchronized packet viewer and interactive endpoint communication topology graph.
+- **Stack:** Python (Scapy, FastAPI), React, TypeScript, SQLite.
 
 ---
 
-## Skills & Technical Areas
+## Technical Skills
 
-- **Networking:** TCP/IP fundamentals, three-way handshakes, connection reset (`RST`) and retransmission behavior, ARP, DNS resolution and failure codes (`A`, `NXDOMAIN`, `SERVFAIL`), HTTP/TLS metadata, subnetting, and routing fundamentals.
-- **Windows and Active Directory:** Windows Security Auditing, Windows Event Forwarding (WEF), domain SIDs, process creation lineage, Windows DPAPI, and Active Directory security & attack-path concepts *(developing)*.
-- **Security Monitoring and Investigation:** Multi-source event correlation, deterministic detection rule design, behavioral baselines, alert triage, evidence collection, and investigation workflows.
-- **Network Analysis:** PCAP/PCAPNG analysis, Scapy, display-filter construction, protocol inspection, L4 flow state analysis, and endpoint communication mapping.
-- **Operating Systems:** Windows 10/11, Windows Server lab administration, and Linux command-line workflows *(developing)*.
-- **Development Tools and Technologies:** Python, FastAPI, SQLAlchemy, Pydantic, SQLite (WAL mode & reversible migrations), React, TypeScript, Vite, Tailwind CSS, Argon2id, pytest, Vitest, Git, and GitHub Actions.
+- **Security & Domains:** Active Directory Security, Windows Event Forwarding (WEF), Attack-Path Mapping, ACL Audit, MITRE ATT&CK.
+- **Networking:** TCP/IP, Routing & Subnetting, OSPF, VLAN Trunking, PCAP Analysis, Wireshark, Scapy, Packet Dissection.
+- **Languages & Frameworks:** Python, FastAPI, React 19, TypeScript, Vite, Tailwind CSS, SQL / SQLite, PowerShell, Bash.
+- **Tools & Platforms:** Git, NetworkX, ReportLab, Docker, Hyper-V, Linux, Windows Server.
 
 ---
 
-## Current Learning Roadmap
+## Current Focus
 
-- **Building an Isolated Active Directory Lab:** Provisioning an isolated hypervisor environment with a Windows Server Domain Controller and Windows 10/11 client VMs to practice domain configuration, security auditing, and Group Policy administration.
-- **Active Directory Attack-Path Concepts:** Studying Kerberos mechanics (AS-REQ/AS-REP pre-authentication, TGS requests, ticket exchange), Service Principal Name (SPN) discovery, BloodHound/SharpHound graph analysis concepts, and defensive detection signatures *(developing)*.
-- **Network Penetration-Testing Methodology:** Practicing structured network enumeration, port/service identification, protocol-level vulnerability validation, and sanitized technical reporting.
-- **Authorized Hands-On Practice:** Continuing progress through foundational TryHackMe learning paths (*Pre-Security*, *Jr Penetration Tester*, *Offensive Pentesting*) to reinforce enumeration discipline and methodology in authorized target environments.
+- **Active Directory Lab:** Hypervisor-based Windows Server Domain Controller testing Kerberos authentication mechanics and BloodHound graph analysis.
+- **Penetration Testing:** Practicing structured network enumeration, vulnerability validation, and technical documentation via TryHackMe paths.
